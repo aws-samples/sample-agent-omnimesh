@@ -2,6 +2,8 @@
 
 ***Omnimesh - Universal network of agents and services***
 
+**IMPORTANT**: This code is intended for demonstration and proof-of-concept purposes only. It is not designed or verified for production use. Before implementing this code in you environment, thoroughly analyze and adapt it to align with your specific business requirements and security standards. AWS cannot warrant the security or functionality of this sample code.
+
 ## Overview
 
 This solution contains the `multi-agent` implementation of an Enterprise IT Support Assistant using Amazon Bedrock `AgentCore` and Strands Agents SDK. Bedrock `AgentCore` enables you to deploy and operate highly effective agents securely, at scale using any framework and model. With Amazon Bedrock `AgentCore`, developers can accelerate AI agents into production with scale, reliability, and security, critical to real-world deployment.
