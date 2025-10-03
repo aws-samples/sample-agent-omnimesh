@@ -6,6 +6,8 @@
 
 ## Overview
 
+**WATCH THE E2E DEMONSTRATION AND SOLUTION WALKTHROUGH: https://www.youtube.com/watch?v=FEuO7P5tAi8**
+
 This solution contains the `multi-agent` implementation of an Enterprise IT Support Assistant using Amazon Bedrock `AgentCore` and Strands Agents SDK. Bedrock `AgentCore` enables you to deploy and operate highly effective agents securely, at scale using any framework and model. With Amazon Bedrock `AgentCore`, developers can accelerate AI agents into production with scale, reliability, and security, critical to real-world deployment.
 
 Strands Agents enables customers to build `multi-agent` architectures in a model-driven approach with a few lines of code, with autonomy and low-level access to building `Agentic` workflows, in a completely model-agnostic way. The IT Support Assistant uses a Strands graph as an orchestrator that coordinates with multiple other agents available via `AgentCore` Gateway, using `AgentCore` Identity, Observability and Memory (both at a global and a sub-agent level).
