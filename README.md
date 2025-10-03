@@ -1,4 +1,4 @@
-# Agent Omnimesh - Enterprise IT Assistant: Multi-Agentic Implementation with AgentCore & Strands
+# Agent Omnimesh - Enterprise IT Assistant: Multi-Agentic Implementation with AgentCore, LangGraph & Strands
 
 ***Omnimesh - Universal network of agents and services***
 
