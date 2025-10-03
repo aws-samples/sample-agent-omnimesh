@@ -1,0 +1,40 @@
+gateway_config:
+  # this is the name of the gateway for this agent and the tools
+  # that this agent has access to - this can be an existing gateway in the case
+  # of which you would have to configure the access token for inbound auth of
+  # this gateway
+  name: "enterpriseit-gw-new"
+  # this is the name of the bucket where the target files (openapi or smithy) will
+  # be uploaded from
+  bucket_name: fmbench-deep-dive
+  # this is the description of the agent gateway
+  description: "AgentCore Gateway for enterprise IT support agents"
+  # protocol type is MCP
+  protocol_type: "MCP"
+  # this is the openAPI spec which will contain the list of agents that will be
+  # registered as tools within the MCP gateway
+  agent_spec: agent_specifications/agent_spec.yaml
+  # If you have an OAuth mechanism to configure the inbound authentication to the gateway using any 
+  # IdP, then provide the following information below:
+  use_existing_inbound_auth: yes
+  inbound_auth:
+    # provide this from your IdP of choice or create one using this code
+    pool_id: ""
+    client_id: 
+    - ""
+    discovery_url: "https://cognito-idp.us-west-2.amazonaws.com//.well-known/openid-configuration"
+  # OAuth provider configuration for agent authentication
+  sub_agents_outbound_authorization:
+    # This is information that is for the outbound authentication from
+    # the gateway into the agents that are registered as tools
+    name: "NewOneEnterprise" # this is the name of the identity provider if it has already been created in your account
+    domain_name: "enterprise-it-agent-f8f96e15"
+    # this is the cognito unser pool
+    # Get the gateway inbound authentication information from running
+    # python gateway_idp/setup_cognito.py - this will create a dummy inbound auth
+    # for the gateway - user pool id, client id, client secret and discovery URL.
+    pool_id: ""
+    client_id: ""
+    # client_secret: Extract this from SSM Parameter Store in production environment
+    discovery_url: "https://cognito-idp.us-west-2.amazonaws.com//.well-known/openid-configuration"
+  

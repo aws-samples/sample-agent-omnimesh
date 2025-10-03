@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+wheels/
+*.egg-info/
+*.egg
+*.active_plugin_sessions.json
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Testing and linting caches
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Security reports
+bandit_report.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+*.csv
+.scratchpad.md
+logs/
+output/
+
+# AWS
+.aws/
+
+# Docker
+.dockerignore
+Dockerfile
+
+
+# Credentials
+*creds.json
+*credentials.json
+kb_credentials.json
+guardrail_creds.json
+creds/
+cognito_config.json
+
+# Agent-specific config files
+.bedrock_agentcore.yaml

@@ -1,0 +1,8 @@
+boto3
+botocore
+langgraph
+langchain-aws
+langchain-core
+langchain-community
+bedrock-agentcore
+bedrock-agentcore-starter-toolkit

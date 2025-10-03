@@ -1,0 +1,21 @@
+# Streamlit Frontend Requirements
+streamlit>=1.29.0
+boto3>=1.34.0
+botocore>=1.34.0
+requests>=2.31.0
+pyyaml>=6.0.1
+python-dateutil>=2.8.2
+
+# Additional UI components
+streamlit-authenticator>=0.2.3
+streamlit-extras>=0.3.0
+
+# AWS and Authentication
+awscli>=1.32.0
+cognito-jwt>=1.4.1
+
+# Logging and utilities
+python-json-logger>=2.0.7
+
+# LangChain
+langchain-community>=0.0.20

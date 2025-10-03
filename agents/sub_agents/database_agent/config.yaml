@@ -1,0 +1,39 @@
+general:
+    name: "This is the agentic system for database management"
+    description: "This is information for the database agent"
+
+# This contains the model information for various agents
+# in our multi agentic system
+model_information:
+    # Represents information about the database agent
+    agent_model_info:
+        # Represents the model id that the agent will use within the system
+        # as an orchestrator agent model
+        model_id: us.anthropic.claude-sonnet-4-20250514-v1:0
+        # Represents the inference parameters that the foundation model
+        # uses at runtime during inference
+        inference_parameters:
+            temperature: 0.0
+            max_tokens: 2048
+            top_p: 1.0
+            stop_sequences: ["</invoke>", "</answer>", "</error>"]
+            top_k: 250
+
+# Represents the directory structure where all the agent prompts will be stored with other resources
+agent_infra_resources:
+    # this is the prompt template directory where the agent prompts will be stored
+    # for the different agents
+    prompt_template_directory: "agent_prompts"
+    # This contains information about the error code that the database agent provides in case
+    # a query is not about databases. The valid response file is a dummy file and will
+    # be replaced with an actual API call or database operation
+    valid_response_path: "sample_json_responses/valid_response/product_and_plugin_response.json"
+    erroneous_response_path: "sample_json_responses/erroneous_response/erroneous_response.json"
+    agent_resources:
+        # this is the system prompt that the database agent will use
+        system_prompt: "database_agent_prompt.txt"
+    agent_runtime_information:
+        # agentcore runtime execution role
+        # this execution role must have the following
+        # permissions provided here: https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-permissions.html
+        runtime_execution_role: arn:aws:iam::218208277580:role/service-role/Amazon-Bedrock-IAM-Role-20240102T112809

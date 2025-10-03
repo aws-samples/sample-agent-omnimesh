@@ -1,0 +1,24 @@
+# This yaml file contains information about which user role can access which
+# agents.
+# This information will be the starter information that will be plugged into the DynamoDB table
+# and will be used as a filtering criteria to invoke agents directly and have some determinism in place
+plugin_products:
+  # For example, a user with the infrastructure specialist role will be
+  # able to access the Infrastructure and the Default agent
+  infrastructure_specialist: ['Infrastructure']
+  # If the user represents the development tools role, then they
+  # will have access to the default and the development tools agent
+  development_tools_specialist: ['DevelopmentTools']
+  # In this case the user with database administrator role will have access to database agent
+  database_administrator: ['Database']
+  # Service desk role with access to general IT support
+  service_desk_agent: ['ServiceDesk']
+  # This is the case when the user comes in with no context or matches the general IT support role,
+  # all agents are enabled and the orchestrator agent decides which agent to call then
+  general_it_support: ['Infrastructure','DevelopmentTools','Database','ServiceDesk','NetworkOps','SecurityOps']
+  # Network operations specialist
+  network_operations: ['NetworkOps']
+  # Security operations specialist
+  security_operations: ['SecurityOps']
+  # Cloud platform administrator with broad access
+  cloud_administrator: ['Infrastructure', 'Database', 'NetworkOps', 'SecurityOps']

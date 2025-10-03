@@ -1,0 +1,41 @@
+general:
+  name: "This is the agentic system for IT support and service desk operations"
+  description: "This is information for the service desk agent"
+
+# This contains the model information for various agents
+# in our multi agentic system
+model_information:
+  # Represents information about the service desk agent
+  service_desk_agent_info:
+    # Represents the model id that the agent will use within the system
+    # as a service desk agent model
+    model_id: us.anthropic.claude-3-7-sonnet-20250219-v1:0
+    # Represents the inference parameters that the foundation model
+    # uses at runtime during inference
+    inference_parameters:
+      temperature: 0.1
+      max_tokens: 2048
+      top_p: 0.92
+      stop_sequences: ['</invoke>', '</answer>', '</error>']
+      top_k: 250
+    # this is the knowledge base ID that the service desk agent will be connected to
+    kb_id: I4IYOHHVFX
+    # number of chunks to be fetched from the knowledge base
+    top_k: 5
+    # These are the prompts for the service desk agent
+    # this is the system prompt that the service desk agent will use
+    system_prompt_fpath: "agent_prompts/service_desk_agent_prompt.txt"
+
+# Represents the directory structure where all the agent prompts will be stored with other resources
+agent_infra_resources:
+  # this is the prompt template directory where the agent prompts will be stored
+  # for the different agents
+  prompt_template_directory: "agent_prompts"
+  agent_resources:
+    # this is the system prompt that the service desk agent will use
+    system_prompt: "service_desk_agent_prompt.txt"
+  agent_runtime_information:
+    # agentcore runtime execution role
+    # this execution role must have the following
+    # permissions provided here: https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-permissions.html
+    runtime_execution_role: <your-runtime-execution-role>

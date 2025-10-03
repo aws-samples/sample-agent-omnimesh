@@ -1,0 +1,72 @@
+general:
+  name: "Enterprise-IT-multi-agent-system"
+  description: "This is a multi agent system for enterprise IT support that uses an orchestrator to route requests to various specialized agents based on user questions"
+
+# This contains the model information for various agents
+# in our multi agentic system
+model_information:
+  # Represents information about the finance agent
+  orchestrator_agent_model_info: 
+    # Represents the model id that the agent will use within the system
+    # as an orchestrator agent model
+    model_id: us.amazon.nova-pro-v1:0
+    # Represents the inference parameters that the foundation model
+    # uses at runtime during inference
+    inference_parameters:
+      temperature: 0.1
+      max_tokens: 4000
+      top_p: 0.92
+      caching: true
+    # Use guardrail
+    # if this is true then the guardrail will be used
+    # for PII redaction, etc.
+    use_guardrail: true
+    # this is the knowledge base ID that the orchestrator agent will be connected to
+    kb_id: 
+    # This is the guardrail to be created
+    # and attached to the orchestrator agent
+    # run this: python agents/create_guardrails/guardrails.py
+    guardrail_id: 
+    guardrail_version: DRAFT
+    router_model: us.amazon.nova-micro-v1:0
+    router_inference_parameters:
+      temperature: 0.0
+      maxTokens: 150
+
+# This is a switch. If this "enhanced routing" is enabled, then the agent will use another node
+# with a Small language model, semantic similarity and majority voting to determine which product
+# product sub agent to route the query to. This significantly would reduce time and cost to
+# determine which sub agent to call.
+# If this is disabled ("no"), then the orchestrator agent will be responsible to decide which
+# sub agent to call based on the agents' information fetched from the agent registry in the prompt, 
+# and will directly flow to node 3, which will look for that sub agent and call it.
+enhanced_routing: no
+
+# Represents the directory structure where all the agent prompts will be stored with other resources
+agent_infra_resources:
+  # this is the prompt template directory where the agent prompts will be stored
+  # for the different agents
+  prompt_template_directory: "agent_prompts"
+  orchestrator_agent_resources:
+    # this is the system prompt that the orchestrator agent will use
+    system_prompt: "orchestrator_agent_system_prompt.txt"
+    router_prompt: "router_prompt.txt"
+  use_existing_memory: False # set to false if you want to create a new memory resource on agentcore
+  # if the existing memory is true, then fill out the memory id below
+  memory_id: <your-memory-id>
+  memory_execution_role: <your-memory-execution-role>
+  # Actor ID used for memory operations and namespacing
+  actor_id: enterprise-it-user
+  # Information about the knowledge base that the agents will be using
+  # This is a list that can be extended based on the number of agents and the knowledge
+  # bases that each of the agent will be using
+  agent_kb_resources:
+    # This is the knowledge base that will be created and used by the orchestrator agent
+    orchestrator_agent:
+      # this is the name of the knowledge base bucket that will be created
+      knowledge_base_bucket_name: "servicecapabilitydatabucket"
+      # This is the directory where all enterprise IT service information will reside and be used within
+      # the knowledge base and by the orchestrator to decide which agent to route the request to
+      information_directory: "enterprise_it_service_information"
+      kb_name: "enterprise-it-knowledge"
+      description: "This is the knowledge base that contains information about enterprise IT services and their capabilities"

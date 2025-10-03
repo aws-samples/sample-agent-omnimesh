@@ -1,0 +1,80 @@
+openapi: 3.0.0
+info:
+  title: Infrastructure
+  version: 1.0.0
+  description: >
+    Expose the Infrastructure Agent (running on AgentCore Runtime) as a Gateway tool.
+    This agent handles infrastructure-related queries and operations.
+
+# ARN baked into the server URL (percent-encoded)
+servers:
+  - url: https://bedrock-agentcore.us-west-2.amazonaws.com/
+
+paths:
+  /:
+    post:
+      operationId: Infrastructure
+      summary: Invoke Infrastructure Agent runtime
+      description: Proxy a prompt to the Infrastructure Agent AgentCore Runtime HTTPS endpoint.
+
+      # No path params anymore. Keep qualifier as an optional query with default.
+      parameters:
+        - name: qualifier
+          in: query
+          required: false
+          description: Target a specific runtime version/alias. If omitted, the default version is used.
+          schema:
+            type: string
+            default: DEFAULT
+
+        # Optional headers your runtime may read (declare but don't require)
+        - name: Mcp-Session-Id
+          in: header
+          required: false
+          schema: { type: string }
+        - name: X-Amzn-Bedrock-AgentCore-Runtime-Session-Id
+          in: header
+          required: false
+          schema: { type: string }
+        - name: Mcp-Protocol-Version
+          in: header
+          required: false
+          schema: { type: string }
+        - name: X-Amzn-Bedrock-AgentCore-Runtime-User-Id
+          in: header
+          required: false
+          schema: { type: string }
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+              required: [prompt]
+              properties:
+                prompt:
+                  type: string
+                  description: Natural language instruction for the Infrastructure agent.
+                  example: "Check the status of our EC2 instances in production."
+
+      responses:
+        '200':
+          description: Successful invocation
+          headers:
+            X-Amzn-Bedrock-AgentCore-Runtime-Session-Id:
+              schema: { type: string }
+            Mcp-Session-Id:
+              schema: { type: string }
+            Mcp-Protocol-Version:
+              schema: { type: string }
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '4XX':
+          description: Client error from the runtime endpoint
+        '5XX':
+          description: Server error from the runtime endpoint

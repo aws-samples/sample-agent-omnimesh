@@ -1,0 +1,51 @@
+agent_gateway:
+  gateway_url: # <https://enterpriseit-gw-.gateway.bedrock-agentcore.us-west-2.amazonaws.com/mcp>
+  inbound_auth_info:
+    client_id: 
+    # client_secret: Extract this from SSM Parameter Store in production environment
+    discovery_url: # <your-domain-url>/.well-known/openid-configuration
+agent_infra_resources:
+  actor_id: enterprise-it-user
+  agent_kb_resources:
+    orchestrator_agent:
+      description: This is the knowledge base that contains information about enterprise
+        IT services and their capabilities
+      information_directory: enterprise_it_service_information
+      kb_name: enterprise-it-knowledge
+      knowledge_base_bucket_name: enterprise-it-servicecapabilitydatabucket
+  cloudwatch_agent_resources:
+    log_group_name: agents/enterprise-it-orchestrator
+    log_stream_name: orchestrator
+  memory_execution_role: "<your-memory-execution-role>"
+  memory_id: "<your-memory-id>"
+  orchestrator_agent_resources:
+    system_prompt: orchestrator_agent_system_prompt.txt
+  prompt_template_directory: agent_prompts
+  use_existing_memory: true
+agent_registry:
+  embeddings_model_info_semantic_search:
+    model_id: amazon.titan-embed-text-v2:0
+  table_name: enterprise-it-agent-mappings
+general:
+  description: This is a multi agent system for enterprise IT support that uses an
+    orchestrator to route requests to various specialized agents based on user questions
+  name: Enterprise-IT-multi-agent-system
+model_information:
+  orchestrator_agent_model_info:
+    inference_parameters:
+      caching: true
+      max_tokens: 4000
+      temperature: 0.1
+      top_p: 0.92
+    model_id: us.anthropic.claude-3-7-sonnet-20250219-v1:0
+user_metadata:
+  provided_context:
+    detected_country: US
+    host: company.com
+    locale: en-US
+    service:
+      capabilities: []
+      category: Infrastructure
+      name: ''
+      version: ''
+    url: ''

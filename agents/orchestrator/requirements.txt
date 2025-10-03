@@ -1,0 +1,8 @@
+streamlit
+requests
+boto3
+python-dotenv
+pandas
+langchain-community>=0.3.29
+scikit-learn>=1.7.1
+numpy
