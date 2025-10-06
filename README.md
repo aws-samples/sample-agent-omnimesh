@@ -1,4 +1,5 @@
 # Agent Omnimesh - Enterprise IT Assistant: Multi-Agentic Implementation with AgentCore, LangGraph & Strands
+# Need VPC private network connectivity with AgentCore Gateway
 
 ***Omnimesh - Universal network of agents and services***
 
