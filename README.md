@@ -278,6 +278,10 @@ cd streamlit
 streamlit run streamlit_app.py
 ```
 
+## Roadmap
+1) Adding VPC privatelink support for AgentCore Runtime and Gateway
+2) Adding capabilities to bring your own MCP server in AgentCore Gateway
+
 ## Support
 
 For issues, questions, or contributions, please refer to the individual README files in each component directory for specific guidance.
