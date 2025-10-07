@@ -399,7 +399,7 @@ def setup_cognito_user_pool():
         return None
 
 
-def reauthenticate_user(client_id):
+def reauthenticate_user(client_id, password):
     boto_session = Session()
     region = boto_session.region_name
     # Initialize Cognito client
@@ -410,7 +410,7 @@ def reauthenticate_user(client_id):
         AuthFlow='USER_PASSWORD_AUTH',
         AuthParameters={
             'USERNAME': 'contact',
-            'PASSWORD': 'MyPassword123!'
+            'PASSWORD': password
         }
     )
     bearer_token = auth_response['AuthenticationResult']['AccessToken']

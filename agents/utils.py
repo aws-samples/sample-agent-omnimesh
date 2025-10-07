@@ -377,7 +377,7 @@ def create_agentcore_role(agent_name):
                     "ecr:GetDownloadUrlForLayer"
                 ],
                 "Resource": [
-                    f"arn:aws:ecr:{region}:{account_id}:repository/{<add-your-repo-name>}"
+                    f"arn:aws:ecr:{region}:{account_id}:repository/YOUR_REPO_NAME"  # Replace YOUR_REPO_NAME with your actual ECR repository name
                 ]
             },
             {
@@ -415,7 +415,7 @@ def create_agentcore_role(agent_name):
                 "Action": [
                     "ecr:GetAuthorizationToken"
                 ],
-                "Resource": "{<add-your-repo-name>}"
+                "Resource": "arn:aws:ecr:REGION:ACCOUNT:repository/YOUR_REPO_NAME"  # Replace with your actual ECR ARN
             },
             {
             "Effect": "Allow",
@@ -821,12 +821,13 @@ def _calculate_secret_hash(username, client_id, client_secret):
     ).decode()
     return secret_hash
 
-def reauthenticate_user(client_id, client_secret=None):
+def reauthenticate_user(client_id, password, client_secret=None):
     """
     Reauthenticate user with Cognito, handling both cases with and without client secret.
 
     Args:
         client_id: Cognito client ID
+        password: User password for authentication
         client_secret: Optional client secret. If not provided, will attempt discovery.
 
     Returns:
@@ -837,7 +838,6 @@ def reauthenticate_user(client_id, client_secret=None):
     cognito_client = boto3.client('cognito-idp', region_name=region)
 
     username = 'enterprisetestuser'
-    password = 'MyPassword123!'
 
     # First, try without SECRET_HASH
     auth_parameters = {

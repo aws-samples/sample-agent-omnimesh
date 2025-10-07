@@ -90,14 +90,17 @@ def _create_resource_server_with_scopes(cognito_client, pool_id, region):
         # Return identifier anyway in case it exists
         return resource_server_identifier
 
-def setup_cognito_user_pool():
+def setup_cognito_user_pool(password=None):
     """
     Set up a Cognito User Pool for authentication and authorization
-    this uses the cognito idp client and uses a pre configured idp and 
+    this uses the cognito idp client and uses a pre configured idp and
     password. This in a production scenario would be your configured
     IdP that would contain your pool id, client id, and admin configurations
     for username and password for re authentication and using that
     to configure inbound authentication with specific scopes within the agent
+
+    Args:
+        password: Password for the test user. If None, uses default.
     """
     boto_session = Session()
     region = boto_session.region_name
@@ -151,10 +154,11 @@ def setup_cognito_user_pool():
             MessageAction='SUPPRESS'
         )
         # Set Permanent Password
+        user_password = password or 'MyPassword123!'  # Fallback for backward compatibility
         cognito_client.admin_set_user_password(
             UserPoolId=pool_id,
             Username='enterprisetestuser',
-            Password='MyPassword123!',
+            Password=user_password,
             Permanent=True
         )
         # Calculate SECRET_HASH for authentication
@@ -165,7 +169,7 @@ def setup_cognito_user_pool():
             AuthFlow='USER_PASSWORD_AUTH',
             AuthParameters={
                 'USERNAME': 'enterprisetestuser',
-                'PASSWORD': 'MyPassword123!',
+                'PASSWORD': user_password,
                 'SECRET_HASH': secret_hash
             }
         )

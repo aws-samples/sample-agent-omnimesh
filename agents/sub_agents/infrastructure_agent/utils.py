@@ -428,13 +428,14 @@ def setup_cognito_user_pool():
         return None
 
 
-def reauthenticate_user(client_id: str, pool_id: str):
+def reauthenticate_user(client_id: str, pool_id: str, password: str):
     """
     Re-authenticate user and get a new access token.
 
     Args:
         client_id: Cognito User Pool client ID
         pool_id: Cognito User Pool ID
+        password: User password for authentication
 
     Returns:
         str: Access token for authentication
@@ -460,7 +461,7 @@ def reauthenticate_user(client_id: str, pool_id: str):
         AuthFlow='USER_PASSWORD_AUTH',
         AuthParameters={
             'USERNAME': 'testuser',
-            'PASSWORD': 'MyPassword123!',
+            'PASSWORD': password,
             'SECRET_HASH': secret_hash
         }
     )
