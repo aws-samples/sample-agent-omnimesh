@@ -1,5 +1,4 @@
 # Agent Omnimesh - Enterprise IT Assistant: Multi-Agentic Implementation with AgentCore, LangGraph & Strands
-# Need VPC private network connectivity with AgentCore Gateway
 
 ***Omnimesh - Universal network of agents and services***
 
@@ -278,6 +277,10 @@ python orchestrator_agent.py
 cd streamlit
 streamlit run streamlit_app.py
 ```
+
+## Roadmap
+1) Adding VPC privatelink support for AgentCore Runtime and Gateway
+2) Adding capabilities to bring your own MCP server in AgentCore Gateway
 
 ## Support
 
