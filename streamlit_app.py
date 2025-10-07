@@ -585,7 +585,6 @@ class StreamlitAgentInterface:
                     password = st.text_input(
                         "Password",
                         type="password",
-                        value="MyPassword123!",
                         help="Your Cognito password"
                     )
                     

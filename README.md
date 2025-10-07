@@ -2,7 +2,7 @@
 
 ***Omnimesh - Universal network of agents and services***
 
-**IMPORTANT**: This code is intended for demonstration and proof-of-concept purposes only. It is not designed or verified for production use. Before implementing this code in you environment, thoroughly analyze and adapt it to align with your specific business requirements and security standards. AWS cannot warrant the security or functionality of this sample code.
+**IMPORTANT**: This code is intended for demonstration and proof-of-concept purposes only. It is not designed or verified for production use. Before implementing this code in your environment, thoroughly analyze and adapt it to align with your specific business requirements and security standards. AWS cannot warrant the security or functionality of this sample code.
 
 ## Overview
 

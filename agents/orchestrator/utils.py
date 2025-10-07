@@ -991,12 +991,13 @@ def _calculate_secret_hash(username, client_id, client_secret):
     ).decode()
     return secret_hash
 
-def reauthenticate_user(client_id, client_secret=None):
+def reauthenticate_user(client_id, password, client_secret=None):
     """
     Reauthenticate user with Cognito, handling both cases with and without client secret.
 
     Args:
         client_id: Cognito client ID
+        password: User password for authentication
         client_secret: Optional client secret. If not provided, will attempt discovery.
 
     Returns:
@@ -1007,7 +1008,6 @@ def reauthenticate_user(client_id, client_secret=None):
     cognito_client = boto3.client('cognito-idp', region_name=region)
 
     username = 'enterprisetestuser'
-    password = 'MyPassword123!'
 
     # First, try without SECRET_HASH
     auth_parameters = {

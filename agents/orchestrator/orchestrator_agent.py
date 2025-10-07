@@ -14,7 +14,7 @@ import time
 import boto3
 import logging
 import argparse
-from utils import *
+from .utils import load_config, format_output, list_tools_from_gateway, save_config
 from constants import *
 from pathlib import Path
 # this is the agent library that is used to create the orchestrator
