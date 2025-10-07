@@ -63,7 +63,7 @@ See `infrastructure_agent/agent_prompts/infrastructure_agent_prompt.txt` for a c
 
 1. Navigate to each of the agent directories (e.g., `infrastructure_agent`, `development_tools_agent`, etc.)
 2. Follow the steps here to deploy the agents on Bedrock AgentCore runtime: https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/getting-started-starter-toolkit.html#starter-toolkit-deploy-to-agent-runtime. 
-3. Configure each of the agent (add the agent `IdP` information that can be fetched from the `agent_idp` folder/existing `IdP` information), launch the agent and get the agent `url` for that agent.
+3. Configure each agent (add the agent `IdP` information that can be fetched from the `agent_idp` folder/existing `IdP` information), launch the agent and get the agent `url` for that agent.
 
 Agents are deployed as Bedrock AgentCore services with:
 - Agent ARN identifier
@@ -110,6 +110,6 @@ This architecture enables intelligent multi-turn conversations while maintaining
 
 ## Next Steps
 
-Provide information about the existing agents or the newly agents created, available as `HTTPs` endpoints to the orchestrator system. These endpoints will be used to be registered as agents or MCP servers within `AgentCore Gateway`. If you already have the `HTTPs` endpoints for the existing agents, then bring in their authentication information as well (if it is `OAuth2.0` based authentication, then provide the `client_id`, `discovery URL`, `client secret` and the `scopes` that are required to get the access token).  
+Provide information about the existing agents or the newly created agents, available as `HTTPS` endpoints to the orchestrator system. These endpoints will be used to be registered as agents or MCP servers within `AgentCore Gateway`. If you already have the `HTTPS` endpoints for the existing agents, then bring in their authentication information as well (if it is `OAuth2.0` based authentication, then provide the `client_id`, `discovery URL`, `client secret` and the `scopes` that are required to get the access token).  
 
-Once done with this step, move forward to the next step, which is registering the agents with the `AgentCore Gateway`. For this, we need the Agent `HTTPs` endpoints and the authentication information (if any) to register the agents with the `AgentCore Gateway`. Move to the agent gateway registration step [here](../agent_gateway/README.md).
+Once done with this step, move forward to the next step, which is registering the agents with the `AgentCore Gateway`. For this, we need the Agent `HTTPS` endpoints and the authentication information (if any) to register the agents with the `AgentCore Gateway`. Move to the agent gateway registration step [here](../agent_gateway/README.md).

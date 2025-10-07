@@ -1,6 +1,6 @@
 # Enterprise IT Assistant AgentCore Memory System
 
-Amazon Bedrock AgentCore Memory lets you create and manage memory resources that store conversation context for your AI agents. Short term memory and long term memory (user preferences, summaries and semantic facts) are tracked as a part of both the orchestrator agent and the domain agents that are invoked through the gateway. The implementation of memory is two fold:
+Amazon Bedrock AgentCore Memory lets you create and manage memory resources that store conversation context for your AI agents. Short-term memory and long-term memory (user preferences, summaries and semantic facts) are tracked as a part of both the orchestrator agent and the domain agents that are invoked through the gateway. The implementation of memory is two-fold:
 
 1. **Enterprise IT Assistant (Orchestrator memory/Shared memory across all agents & environment)**: The orchestrator agent maintains and stores long term memory (user preferences, semantics and summaries) across all agents.
 2. **Domain level agent memory**: Each domain agent can maintain its own memory context.

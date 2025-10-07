@@ -1,6 +1,6 @@
 # Agent onboarding
 
-This is a dummy agent for infrastructure support built on LangGraph that is hosted on Bedrock Agentcore runtime with OAuth 2.0.
+This is a dummy agent for infrastructure support built on LangGraph that is hosted on Bedrock AgentCore runtime with OAuth 2.0.
 
 ## About: Orchestration handling
 

@@ -8,7 +8,7 @@ This folder provides a Cognito-based identity provider setup for securing agent 
 **Before using this folder, determine your current setup:**
 
 ### Option 1: You Already Have a Configured Agent
-If you already have an agent running as an HTTP service with identity configuration, **skip this setup** and collect the following information for gateway configuration. This can be any other OIDC compliant `IdP`, in this example we are using `Cognito` as the `IdP`.:
+If you already have an agent running as an HTTP service with identity configuration, **skip this setup** and collect the following information for gateway configuration. This can be any other OIDC-compliant `IdP`, in this example we are using `Cognito` as the `IdP`:
 
 - **User Pool ID**: The `Cognito` user pool ID
 - **Domain Name**: The `Cognito` domain name
