@@ -12,7 +12,7 @@ streamlit-extras>=0.3.0
 
 # AWS and Authentication
 awscli>=1.32.0
-cognito-jwt>=1.4.1
+cognitojwt>=1.4.1
 
 # Logging and utilities
 python-json-logger>=2.0.7
