@@ -16,7 +16,7 @@ dependencies = [
     "langchain-core",
     "langchain-aws",
     "zmq>=0.0.0",
-    "aws-cdk-lib>=2.208.0",
+    "aws-cdk-lib>=2.253.0",
     "constructs>=10.4.2",
     "python-dotenv>=1.1.1",
     "bedrock-agentcore",
